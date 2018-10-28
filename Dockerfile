@@ -1,6 +1,5 @@
 FROM mediawiki:latest
 
-RUN docker-php-ext-install -j$(nproc) pdo_pgsql
-RUN docker-php-ext-install -j$(nproc) pgsql
-
-
+RUN apt update && apt install -y libpq-dev
+    && docker-php-ext-install -j$(nproc) pdo_pgsql
+    && docker-php-ext-install -j$(nproc) pgsql 
